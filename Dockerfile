@@ -10,7 +10,7 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
   apt-get update && \
   apt-get install -y google-chrome-stable xvfb
 RUN rm /etc/apt/sources.list.d/google.list
-RUN apt-get -y update && apt-get -y install git 
+RUN apt-get -y update && apt-get -y install git make gcc g++
 
 RUN npm install npm@5.6 -g
 RUN npm cache verify
