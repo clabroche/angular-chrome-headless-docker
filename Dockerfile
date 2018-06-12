@@ -15,3 +15,7 @@ RUN apt-get -y update && apt-get -y install git make gcc g++
 RUN npm install npm@5.6 -g
 RUN npm cache verify
 RUN rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y xvfb libgtk2.0-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2
+RUN apt-get install -y sudo
+RUN npm i cypress
+RUN cd usr/bin && ln -s /node_modules/.bin/cypress cypress
