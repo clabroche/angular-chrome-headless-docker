@@ -7,14 +7,10 @@ RUN sudo sh -c 'echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ s
 
 RUN  apt-get update
 
-RUN apt-get install -y  procps git make gcc g++ google-chrome-stable xvfb nodejs xvfb libgtk2.0-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 mariadb-server mariadb-client
+RUN apt-get install -y  procps git make gcc g++ google-chrome-stable xvfb nodejs xvfb libgtk2.0-0 libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2
 RUN rm -rf /var/lib/apt/lists/*
 
 RUN npm install npm@5.6 -g
 RUN npm cache verify
 RUN npm i cypress
 RUN cd usr/bin && ln -s /node_modules/.bin/cypress cypress
-
-RUN service mysql start && mysqladmin -u root password 'my-secret-pw'
-RUN service mysql start && echo 'CREATE DATABASE database_production' | mysql -uroot -pmy-secret-pw
-RUN apt-get update && apt-get install -y docker.io
